@@ -9,7 +9,7 @@ let g:solarized_termcolors=256
 let g:molokai_original = 1
 let g:rehash256 = 1
 
- 
+"Change bg colour of current line
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
 
@@ -19,9 +19,10 @@ set laststatus=2
 set noshowmode
 highlight VertSplit cterm=none gui=none
 
+"NERDTree for exploring project files
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <C-n> :NERDTreeToggle<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
+autocmd vimenter * if !argc() | NERDTree | endif "open NERDTree automatically when a file is not specified
 
 if ! has('gui_running')
 	set ttimeoutlen=10
@@ -32,14 +33,23 @@ if ! has('gui_running')
 	augroup END
 endif
 
+"resize vim windows with mouse correctly inside tmux
 set mouse+=a
 if &term =~ '^screen'
 	"tmux knows the extended mouse mode
 	set ttymouse=xterm2
 endif
 
+"airline theme
+"let g:airline_theme = 'airlineish'
 let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+	  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
+"syntastic for syntax checking
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1    " Put errors on left side
 let g:syntastic_quiet_warnings = 1  " Only errors, not warnings please
@@ -60,17 +70,10 @@ else
 	let g:syntastic_style_warning_symbol = '>'
 endif
 
-"let g:airline_theme = 'airlineish'
-
-command W w "Fixing accidental Shift key
+command W w "temp fix for accidental Shift key
 command Wq w
 command WQ wq
 command Q q
 
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-	  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
+" clear searchs by typing :C
 command C let @/=""
