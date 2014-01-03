@@ -1,0 +1,21 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>					<dir>		<type>		<options>	<dump>	<pass>
+# /dev/sda1
+UUID=4812865c-bdaf-47b1-b49b-eb05a9adb4c9	/         	ext4      	rw,relatime,data=ordered	0 1
+
+# /dev/sda3
+UUID=b2c71829-caa7-4cae-a20b-ab0c19523b23	/home     	ext4      	rw,relatime,data=ordered	0 2
+
+# /dev/sda2
+UUID=763bee29-b1de-4ab9-9f96-ece1c4d0812d	/boot     	ext4      	rw,relatime,stripe=4,data=ordered	0 2
+
+# /dev/sda4
+UUID=7ea59f70-f693-4357-885c-adaed1dd1d49	none      	swap      	defaults  	0 0
+
+# /dev/sda5
+UUID=4A587C491ECF0D91				/data		ntfs-3g		rw,relative,data=ordered	0 0
+
+# /dev/sda6
+UUID=708473AA28053D9C				none		fuseblk		noauto		0 0
