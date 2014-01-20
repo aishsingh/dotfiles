@@ -13,7 +13,7 @@ compton --config ~/.config/compton.conf &
 mpd ~/.config/mpd/mpd.conf &
 
 # Set Wallpaper
-hsetroot -center ~/Downloads/Wallpapers/Folds_1920X1080.jpg
+hsetroot -center ~/downloads/wallpapers/Folds_1920X1080.jpg
 
 # Set cursor
 xsetroot -cursor_name left_ptr
