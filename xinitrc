@@ -1,6 +1,30 @@
+# Fix up X server
 xrdb -merge ~/.Xresources &
-#unagi &
+#xmodmap ~/.Xmodmap
+
+# Fix up fonts
+xset +fp /usr/share/fonts/local
+xset fp rehash
+
+# Compositor
 compton --config ~/.config/compton.conf &
-unclutter -idle 3 -root -jitter 10 &
+
+# MPD Daemon
 mpd ~/.config/mpd/mpd.conf &
-exec awesome
+
+# Set Wallpaper
+hsetroot -center ~/Downloads/Wallpapers/Folds_1920X1080.jpg
+
+# Set cursor
+xsetroot -cursor_name left_ptr
+unclutter -idle 3 -root &
+
+# Top panel
+export PANEL_FIFO=/tmp/panel-fifo
+export PANEL_HEIGHT=19
+conky -c ~/.config/conky/conkyrc &
+/home/aish/.config/bspwm/panel &
+
+# Start bspwm 
+sxhkd &
+exec bspwm

@@ -99,7 +99,7 @@ chatnets = {
   fn = {
     type = "IRC";
     nick = "aishi";
-    autosendcmd = "/msg nickserv IDENTIFY <<PASSWORD HERE>>; /nicklist fifo;";
+    autosendcmd = "/msg nickserv IDENTIFY <<PASSWORD>>; /nicklist fifo;";
     autosendcmd = "/q; /clear;";
   };
 };

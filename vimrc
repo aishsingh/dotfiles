@@ -70,10 +70,14 @@ else
 	let g:syntastic_style_warning_symbol = '>'
 endif
 
-command W w "temp fix for accidental Shift key
-command Wq w
-command WQ wq
-command Q q
+"temp fix for accidental Shift key
+command W w command Q q
+cmap Wq wq
 
 " clear searchs by typing :C
 command C let @/=""
+cmap w!! w !sudo tee > /dev/null %
+
+set tabstop=4
+set shiftwidth=4
+
