@@ -22,8 +22,8 @@ unclutter -idle 3 -root &
 # Top panel
 export PANEL_FIFO=/tmp/panel-fifo
 export PANEL_HEIGHT=19
-conky -c ~/.config/conky/conkyrc &
 /home/aish/.config/bspwm/panel &
+sleep .5 && conky -c ~/.config/conky/conkyrc &
 
 # Start bspwm 
 sxhkd &
