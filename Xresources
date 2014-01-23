@@ -1,7 +1,7 @@
 Xcursor.theme: DMZ-White
 
 URxvt.depth: 32
-URxvt.background: [90]#222222
+URxvt.background: [80]#333333
 URxvt.scrollBar: false
 
 URxvt*font:                 xft:Terminess Powerline:regular:size=10
@@ -22,10 +22,6 @@ URxvt.keysym.C-Left     : \033[1;5D
 
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
-
-!URxvt.keysym.M-c:   perl:clipboard:copy
-!URxvt.keysym.M-v:   perl:clipboard:paste
-!URxvt.keysym.M-C-v: perl:clipboard:paste_escapeD
 
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
