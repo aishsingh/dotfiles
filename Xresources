@@ -55,8 +55,6 @@ URxvt*keysym.End: \033[4~
 !magenta
 *color5: #75507B 
 *color13: #AD7FA8 
-!B7416E
-!BB4466
 !cyan
 *color6: #5E7175
 *color14: #A3BABF

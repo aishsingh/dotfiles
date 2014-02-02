@@ -152,3 +152,5 @@ endfor
 "noremap j <NOP>
 "noremap k <NOP>
 "noremap l <NOP>
+
+set clipboard=unnamed
