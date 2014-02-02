@@ -7,15 +7,15 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # Compositor
-compton --config ~/.config/compton.conf &
+#compton --config ~/.config/compton.conf &
 
 # MPD Daemon
 mpd ~/.config/mpd/mpd.conf &
 
 # Set Wallpaper
-hsetroot -center ~/downloads/wallpapers/Folds_1920X1080.jpg
+hsetroot -tile ~/downloads/wallpapers/tweed_@2X.png
 
-# Set cursor
+# Set Cursor
 xsetroot -cursor_name left_ptr
 unclutter -idle 3 -root &
 
@@ -23,7 +23,9 @@ unclutter -idle 3 -root &
 export PANEL_FIFO=/tmp/panel-fifo
 export PANEL_HEIGHT=19
 /home/aish/.config/bspwm/panel &
-sleep .5 && conky -c ~/.config/conky/conkyrc &
+
+# Drop-down terminal
+#tilda &
 
 # Start bspwm 
 sxhkd &

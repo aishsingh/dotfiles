@@ -1,7 +1,7 @@
 Xcursor.theme: DMZ-White
 
 URxvt.depth: 32
-URxvt.background: [80]#333333
+URxvt.background: #222222
 URxvt.scrollBar: false
 
 URxvt*font:                 xft:Terminess Powerline:regular:size=10
@@ -26,10 +26,10 @@ URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
-URxvt.iso14755: false
-!URxvt.iso14755_52: false
+URxvt.geometry: 90x24
+URxvt.fading: 30
 
-!URxvt*scrollWithBuffer: true
+URxvt.iso14755: false
 
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End: \033[4~
@@ -38,7 +38,7 @@ URxvt*keysym.End: \033[4~
 *background: #302627
 
 !black
-*color0: #1C1C1C
+*color0: #282828
 *color8: #4d4d4d
 !red
 *color1: #D81860
@@ -50,11 +50,13 @@ URxvt*keysym.End: \033[4~
 *color3: #FEA63C
 *color11: #FFE863
 !blue
-*color4: #66AABB
+*color4: #18748B
 *color12: #66AABB
 !magenta
-*color5: #B7416E
-*color13: #BB4466
+*color5: #75507B 
+*color13: #AD7FA8 
+!B7416E
+!BB4466
 !cyan
 *color6: #5E7175
 *color14: #A3BABF
@@ -66,7 +68,7 @@ URxvt*keysym.End: \033[4~
 !For man pages and url colour
 URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #D81860
-URxvt.colorUL:      #D81860
+URxvt.colorUL:      #66AABB
 
 !cursor
 URxvt.cursorBlink: 1
