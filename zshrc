@@ -26,8 +26,8 @@ man() {
 }
 
 # VIM mode
-NORMALMODE="%{$fg[green]%} -- [% NORMAL]% -- %{$reset_color%}"
-INSERTMODE="%{$fg[white]%} -- [% INSERT]% -- %{$reset_color%}"
+NORMALMODE="%{$fg[green]%} -- [% NORMAL]%  -- %{$reset_color%}"
+INSERTMODE="%{$fg[white]%} -- [% INSERT]%  -- %{$reset_color%}"
 bindkey -v
 bindkey '^P' up-history
 bindkey '^N' down-history

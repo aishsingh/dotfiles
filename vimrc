@@ -129,7 +129,7 @@ let g:startify_list_order =  [['   Recently modified'],
             			    \ ['   Sessions:'],
             				\ 'sessions',
             			    \ ['   Bookmarks:'],
-            				\ 'bookmarks' ]
+            				\ 'bookmarks' ] 
 
 hi StartifyHeader		ctermfg=darkgreen
 hi StartifyBracket		ctermfg=darkgrey
