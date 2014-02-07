@@ -53,3 +53,12 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+ 
+# autoload edit-command-line
+# zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
+
+source /home/aish/git/opp.zsh/opp.zsh
+source /home/aish/git/opp.zsh/opp/surround.zsh
+source /home/aish/git/opp.zsh/opp/textobj-between.zsh
+source /home/aish/git/zle_vi_visual.zsh

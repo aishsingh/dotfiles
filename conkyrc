@@ -1,64 +1,46 @@
-# Conky settings #
-background yes
-update_interval 1
+#avoid flicker
 double_buffer yes
-no_buffers yes
 
-# Window specifications #
-gap_x 552
-gap_y 380
-minimum_size 180 150
-maximum_width 496
-own_window yes
+#conky pipe to dzen
+out_to_console yes
+#out_to_x no
+
+#own window to run simultanious 2 or more conkys
+own_window  yes
+own_window_transparent no
 own_window_type dock
-own_window_transparent yes
-own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 #own_window_argb_visual yes
 #own_window_argb_value 0
-#border_margin 0
-#border_inner_margin 0
-#border_outer_margin 0
-#alignment top_left
+own_window_hints undecorated,sticky,below,skip_taskbar,skip_pager 
 
-# Graphics settings #
+#shades
 draw_shades no
-draw_outline no
-draw_borders no
-draw_graph_borders no
 
-# Text settings #
+#position
+gap_x 605
+gap_y 2
+alignment top_middle
+
+#behaviour
+update_interval 5
+
+#colour
+default_color B7CE42
+own_window_colour 222222
+#font
 use_xft yes
-xftalpha 0
-xftfont Open Sans Light:size=10
+xftfont Terminus:size=8
 
+# force utf8? note that utf8 support required xft
 override_utf8_locale yes
 
-imlib_cache_size 0
+#to prevent window from moving
+use_spacer none
+minimum_size 1310 0
+maximum_width 1310
+#mpd
+mpd_host localhost
+mpd_port 6600
 
-# Color scheme #
-default_color FFFFFF
-
-color1 FFFFFF
-color2 FFFFFF
-color3 FFFFFF
-color4 FFFFFF
-color5 FFFFFF
-color6 FFFFFF
-color7 333333
-
-TEXT
-${goto 140}${font Raleway:weight=Light :size=100}${alignc}${time %H:%M}${font}                 
-
-
-
-${goto 60}${font Raleway:weight=Light:size=32}${alignc}${time %A %B %d}${font}
-
-
-
-${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=44418&u=c" -o ~/.cache/weather.xml}${font Raleway:size=20}
-${goto 16}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font Raleway:weight=Light:size=14}${goto 114}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 224}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°${goto 334}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4'}°${goto 444}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5'}°
-
-${font Raleway:weight=Light:size=10}${goto 150}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 260}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°${goto 370}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4'}°${goto 480}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5'}°
-${font Raleway:weight=Light:size=15}
-${goto 4}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[a-z]' '[A-Z]'}${goto 114}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[a-z]' '[A-Z]'}${goto 224}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3' | tr '[a-z]' '[A-Z]'}${goto 334}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4' | tr '[a-z]' '[A-Z]'}${goto 444}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5' | tr '[a-z]' '[A-Z]'}
-${font Raleway:weight=Light:size=15}${execi 300 cp -f ~/.conky-weather-icons/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather-1.png}${image ~/.cache/weather-1.png -p 0,320 -s 32x32}${execi 300 cp -f ~/.conky-weather-icons/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2').png ~/.cache/weather-2.png}${image ~/.cache/weather-2.png -p 110,320 -s 32x32}${execi 300 cp -f ~/.conky-weather-icons/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3').png ~/.cache/weather-3.png}${image ~/.cache/weather-3.png -p 220,320 -s 32x32}${execi 300 cp -f ~/.conky-weather-icons/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4').png ~/.cache/weather-4.png}${image ~/.cache/weather-4.png -p 330,320 -s 32x32}${execi 300 cp -f ~/.conky-weather-icons/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5').png ~/.cache/weather-5.png}${image ~/.cache/weather-5.png -p 440,320 -s 32x32}${voffset 20}
+text
+${alignr}${if_mpd_playing} ${if_empty $mpd_title}${color white}${mpd_smart 35}${color}$else$mpd_artist${color white} $mpd_title${color}$endif$endif${if_match "${wireless_essid wlp3s0}" != "off/any"}   Mail ${color white}[H:${execpi 750 ~/.config/conky/hotmail.pl}]${color} ${color white}[G:${execpi 750 ~/.config/conky/gmail.pl}]${color}$endif   Uptime ${color white}$uptime_short${color}${if_match "${wireless_essid wlp3s0}" != "off/any"}   Public ${color white}${execi 3600 ~/.config/conky/ip.sh}${color}   Local ${color white}${addr wlp3s0}${color}   Net ${color white}${wireless_essid wlp3s0}${color}$endif   Ram ${color white}$mem${color}   Bri ${color white}${exec xbacklight | sed 's/\.[^ ]*/ /g'}${color}  Vol ${color white}$mpd_vol${color}   Bat ${color white}$battery_percent${color}   ${time %d %b} ${color white}${time %l:%M}${color} 
