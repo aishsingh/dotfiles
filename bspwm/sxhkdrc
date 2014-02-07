@@ -1,0 +1,137 @@
+#
+# bspwm hotkeys
+#
+
+super + alt + Escape
+    pkill -x panel; pkill -x tilda; bspc quit
+
+super + shift + c
+    bspc window -c || bspc desktop -r
+
+super + t
+    bspc desktop -l next
+
+super + b
+    bspc desktop -B
+
+super + {s,f}
+    bspc window -t {floating,fullscreen}
+
+super + {grave,Tab}
+    bspc {window,desktop} -f last
+
+super + apostrophe
+    bspc window -s last
+
+super + {o,i}
+    bspc control --record-history off; \
+    bspc window {older,newer} -f; \
+    bspc control --record-history on
+
+super + y
+    bspc window -w last.manual
+
+super + m
+    bspc window -s biggest
+
+super + {_,shift + }{h,j,k,l}
+    bspc window -{f,s} {left,down,up,right}
+
+super + {_,shift + }c
+    bspc window -f {next,prev}
+
+super + {comma,period}
+    bspc desktop -C {backward,forward}
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}
+
+super + ctrl + {h,j,k,l}
+    bspc window -p {left,down,up,right}
+
+super + ctrl + {_,shift + }space
+    bspc {window -p cancel,desktop -c}
+
+super + alt + {h,j,k,l}
+    bspc window -e {left -10,down +10,up -10,right +10}
+
+super + alt + shift + {h,j,k,l}
+    bspc window -e {right -10,up +10,down -10,left +10}
+
+super + ctrl + {1-9}
+    bspc window -r 0.{1-9}
+
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,window -d} ^{1-9,10}
+
+~button1
+    bspc pointer -g focus
+
+super + button{1-3}
+    bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+    bspc pointer -t %i %i
+
+super + @button{1-3}
+    bspc pointer -u
+
+
+#
+# wm independent hotkeys
+#
+
+super + Return
+    urxvt
+super + shift + Return
+	urxvt -e zsh -c 'bspc window -t floating && zsh'
+super + p
+    dmenu_run -sb \#B7CE42 -sf \#000000 -nb \#222222 -h 19 -dim .6
+super + r
+	/home/aish/.config/dmenu/renamedesk
+super + backslash
+	/home/aish/.config/dmenu/adddesk
+super + shift + backslash
+	/home/aish/.config/dmenu/adddesk tmp
+super + ctrl + shift + l
+	bspc window -t locked
+super + ctrl + shift + s
+	bspc window -t sticky
+super + alt + comma
+	bspc desktop -R -90
+super + alt + period
+	bspc desktop -R 90
+super + shift + bracket{left,right}
+    bspc desktop -s {prev,next}
+
+# MPD
+XF86AudioPlay
+    ncmpcpp toggle
+ctrl + XF86AudioPlay
+    ncmpcpp stop
+XF86AudioLowerVolume
+    ncmpcpp volume -2
+XF86AudioRaiseVolume
+    ncmpcpp volume +2
+XF86AudioMute
+    amixer set PCM toggle
+ctrl + Delete
+    ncmpcpp prev
+ctrl + KP_Add
+    ncmpcpp next
+
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd && xrdb -merge ~/.Xresources
+alt + h
+	bspc window --edge right push || bspc window --edge left push
+alt + j
+	bspc window --edge right pull || bspc window --edge left pull
+alt + k
+	bspc window --edge up push || bspc window --edge down push
+alt + l
+	bspc window --edge up pull || bspc window --edge down pull
+alt + minus
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` + 4 ))
+alt + equal
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 4 ))
