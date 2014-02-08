@@ -19,6 +19,7 @@ ln -sfv $dir/compton.conf 		 /home/$USER/.config/.
 ln -sfv $dir/conkyrc			 /home/$USER/.config/conky/. 
 ln -sfv $dir/irssi/*			 /home/$USER/.irssi/*
 ln -sfv $dir/mpd.conf			 /home/$USER/.config/mpd/. 
+ln -sfv $dir/ncmpcpp			 /home/$USER/.ncmpcpp
 ln -sfv $dir/terminalrc			 /home/$USER/.config/xfce4/terminal/. 
 ln -sfv $dir/tmux.conf			 /home/$USER/.tmux.conf
 ln -sfv $dir/vim				 /home/$USER/.vim
