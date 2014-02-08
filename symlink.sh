@@ -2,6 +2,11 @@
 
 dir="/home/$USER/dotfiles"
 
+echo 'Files last modified'
+git ls-tree -r --name-only HEAD | while read filename; do
+	echo "$(git log -1 --format="%ad" -- $filename) $filename"
+done
+
 echo 'Starting main symlinks'
 ln -sfv $dir/bashrc				 /home/$USER/.bashrc 
 ln -sfv $dir/bspwm/bspwmrc		 /home/$USER/.config/bspwm/.  
