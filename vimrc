@@ -154,3 +154,8 @@ endfor
 "noremap l <NOP>
 
 set clipboard=unnamed
+
+nmap <Leader>\ :TagbarToggle<CR>
+
+let g:notes_directories = ['~/.vim/notes']
+let g:syntastic_cpp_compiler = '-std=c++11' 

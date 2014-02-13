@@ -1,10 +1,14 @@
 # Fix up X server
 xrdb -merge ~/.Xresources &
-#xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap
 
 # Fix up fonts
 xset +fp /usr/share/fonts/local
 xset fp rehash
+
+# screen powersave
+xset +dpms
+xset dpms 0 0 300
 
 # Compositor
 compton --config ~/.config/compton.conf &
@@ -13,7 +17,7 @@ compton --config ~/.config/compton.conf &
 mpd ~/.config/mpd/mpd.conf &
 
 # Set Wallpaper
-hsetroot -center ~/downloads/wallpapers/Folds_1920X1080.jpg
+hsetroot -solid \#444444
 
 # Set Cursor
 xsetroot -cursor_name left_ptr

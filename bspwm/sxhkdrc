@@ -80,7 +80,6 @@ super + @button{1-3}
 #
 # wm independent hotkeys
 #
-
 super + Return
     urxvt
 super + shift + Return
@@ -103,7 +102,8 @@ super + alt + period
 	bspc desktop -R 90
 super + shift + bracket{left,right}
     bspc desktop -s {prev,next}
-
+ctrl + {percent,quotedbl}
+	bspc window -p {right,down} && urxvt
 # MPD
 XF86AudioPlay
     ncmpcpp toggle
@@ -123,15 +123,14 @@ ctrl + KP_Add
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd && xrdb -merge ~/.Xresources
-alt + h
-	bspc window --edge right push || bspc window --edge left push
-alt + j
-	bspc window --edge right pull || bspc window --edge left pull
-alt + k
-	bspc window --edge up push || bspc window --edge down push
-alt + l
-	bspc window --edge up pull || bspc window --edge down pull
 alt + minus
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` + 4 ))
 alt + equal
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 4 ))
+# Move floating windows (requires baskerville's xdo)
+alt + {h,l,k,j}
+	xdo move {-x -20,-x +20,-y -20,-y +20}
+
+# Resize floating windows
+alt + shift + {h,l,k,j}
+	xdo resize {-w -20,-w +20,-h -20,-h +20} && bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}
