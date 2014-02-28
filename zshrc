@@ -62,3 +62,10 @@ source /home/aish/git/opp.zsh/opp.zsh
 source /home/aish/git/opp.zsh/opp/surround.zsh
 source /home/aish/git/opp.zsh/opp/textobj-between.zsh
 source /home/aish/git/zle_vi_visual.zsh
+
+# inserting last output
+zmodload -i zsh/parameter
+insert-last-command-output() {
+	LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output

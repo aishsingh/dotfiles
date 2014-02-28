@@ -25,7 +25,7 @@ alignment top_middle
 update_interval 5
 
 #colour
-default_color B7CE42
+default_color 6c6c6c
 own_window_colour 222222
 #font
 use_xft yes
@@ -43,4 +43,4 @@ mpd_host localhost
 mpd_port 6600
 
 text
-${alignr}${if_mpd_playing} ${if_empty $mpd_title}${color white}${mpd_smart 35}${color}$else$mpd_artist${color white} $mpd_title${color}$endif$endif${if_match "${wireless_essid wlp3s0}" != "off/any"}   Mail ${color white}[H:${execpi 750 ~/.config/conky/hotmail.pl}]${color} ${color white}[G:${execpi 750 ~/.config/conky/gmail.pl}]${color} ${color white}[S:${execpi 750 ~/.config/conky/swin.pl}]${color}$endif   Uptime ${color white}$uptime_short${color}${if_match "${wireless_essid wlp3s0}" != "off/any"}   Public ${color white}${execi 3600 ~/.config/conky/ip.sh}${color}   Local ${color white}${addr wlp3s0}${color}   Net ${color white}${wireless_essid wlp3s0}${color}$endif   Ram ${color white}$mem${color}   Bri ${color white}${exec xbacklight | sed 's/\.[^ ]*/ /g'}${color}  Vol ${color white}$mpd_vol${color}   Bat ${color white}$battery_percent${color}   ${time %d %b} ${color white}${time %l:%M}${color} 
+${alignr}${if_mpd_playing} ${if_empty $mpd_title}${color grey}${mpd_smart 35}${color}$else$mpd_artist${color grey} $mpd_title${color}$endif$endif${if_match "${wireless_essid wlp3s0}" != "off/any"}   Mail ${color grey}[H:${execpi 750 ~/.config/conky/hotmail.pl}]${color} ${color grey}[G:${execpi 750 ~/.config/conky/gmail.pl}]${color} ${color grey}[S:${execpi 750 ~/.config/conky/swin.pl}]${color}$endif   Uptime ${color grey}$uptime_short${color}${if_match "${wireless_essid wlp3s0}" != "off/any"}   Public ${color grey}${execi 3600 ~/.config/conky/ip.sh}${color}   Local ${color grey}${addr wlp3s0}${color}   Net ${color grey}${wireless_essid wlp3s0}${color}$endif   Ram ${color grey}$mem${color}   Bri ${color grey}${exec xbacklight | sed 's/\.[^ ]*/ /g'}${color}  Vol ${color grey}$mpd_vol${color}   Bat ${color grey}$battery_percent${color}   ${time %d %b} ${color grey}${time %l:%M}${color} 

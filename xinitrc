@@ -12,12 +12,14 @@ xset dpms 0 0 300
 
 # Compositor
 compton --config ~/.config/compton.conf &
+#unagi &
 
 # MPD Daemon
 mpd ~/.config/mpd/mpd.conf &
 
 # Set Wallpaper
-hsetroot -solid \#444444
+#hsetroot -solid \#444444
+hsetroot -center ~/downloads/wallpapers/the-alps-2-1920x1200.jpg
 
 # Set Cursor
 xsetroot -cursor_name left_ptr

@@ -70,4 +70,4 @@ URxvt.colorUL:      #66AABB
 
 !cursor
 URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
+!URxvt.cursorUnderline: 1
