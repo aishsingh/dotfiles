@@ -4,7 +4,7 @@ ZSH_THEME="frisk-red"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="false"
 
-plugins=(git dirnavigate)
+plugins=(git)
 
 export EDITOR=vim
 export PATH="$PATH":~/.bin

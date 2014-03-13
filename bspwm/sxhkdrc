@@ -5,8 +5,8 @@
 super + alt + Escape
     pkill -x panel; pkill -x tilda; bspc quit
 
-super + shift + c
-    bspc window -c || bspc desktop -r
+super + a
+    bspc window -c && sleep .2 && bspc desktop -r || bspc desktop -r
 
 super + t
     bspc desktop -l next
@@ -84,6 +84,8 @@ super + Return
     urxvt
 super + shift + Return
 	urxvt -e zsh -c 'bspc window -t floating && zsh' #&& xdo move -x 600 -y 400
+super + ctrl + Return
+    urxvt -e ranger /data
 super + p
     dmenu_run -sb \#B7CE42 -sf \#000000 -nb \#222222 -h 19 -dim .6
 super + r
@@ -114,7 +116,7 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     ncmpcpp volume +2
 XF86AudioMute
-    amixer set PCM toggle
+    amixer set Master toggle
 ctrl + Delete
     ncmpcpp prev
 ctrl + KP_Add

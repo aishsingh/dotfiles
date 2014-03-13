@@ -1,7 +1,7 @@
 Xcursor.theme: DMZ-White
 
 URxvt.depth: 32
-URxvt.background: #222222
+URxvt.background: [95]#222222
 URxvt.scrollBar: false
 
 URxvt*font:                 xft:Terminess Powerline:regular:size=10
@@ -27,7 +27,7 @@ URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 URxvt.geometry: 90x24
-URxvt.fading: 0
+URxvt.fading: 15
 
 URxvt.iso14755: false
 

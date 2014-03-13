@@ -1,3 +1,5 @@
+devmon --exec-on-drive "twmnc -c 'Mounted %f on %d'" --exec-on-unmount "twmnc -c 'Unmounted %l'" --exec-on-remove "twmnc -c 'Device removed'" &
+
 # Fix up X server
 xrdb -merge ~/.Xresources &
 xmodmap ~/.Xmodmap
@@ -6,9 +8,9 @@ xmodmap ~/.Xmodmap
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-# screen powersave
+# screen powersave after 2 min
 xset +dpms
-xset dpms 0 0 300
+xset dpms 0 0 120
 
 # Compositor
 compton --config ~/.config/compton.conf &
@@ -28,10 +30,17 @@ xsetroot -cursor_name left_ptr
 # Top panel
 export PANEL_FIFO=/tmp/panel-fifo
 export PANEL_HEIGHT=19
-/home/aish/.config/bspwm/panel &
+sleep 10 && /home/aish/.config/bspwm/panel &
 
 # Drop-down terminal
 #tilda &
+
+# Alsa
+amixer set Master 95%
+amixer set Speaker 28%
+
+# Notification Daemon
+twmnd &
 
 # Start bspwm 
 sxhkd &

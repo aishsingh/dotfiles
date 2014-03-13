@@ -6,6 +6,8 @@ set t_Co=256
 
 filetype plugin indent on
 
+colorscheme deep
+
 "change bg colour of current line
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
@@ -183,8 +185,8 @@ let &t_EI .= "\<Esc>[1 q"
 " 6 -> solid vertical bar
 
 " Code folding
-autocmd BufWinLeave * if expand("%") != "" | mkview | endif
-autocmd BufWinEnter * if expand("%") != "" | loadview | endif
+"autocmd BufWinLeave * if expand("%") != "" | mkview | endif
+"autocmd BufWinEnter * if expand("%") != "" | loadview | endif
 set foldmethod=marker
 set foldtext=MyFoldText()
 function! MyFoldText()
