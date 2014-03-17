@@ -27,7 +27,7 @@ URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 URxvt.geometry: 90x24
-URxvt.fading: 15
+!URxvt.fading: 15
 
 URxvt.iso14755: false
 

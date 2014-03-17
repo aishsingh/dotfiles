@@ -17,7 +17,7 @@ super + b
 super + {s,f}
     bspc window -t {floating,fullscreen}
 
-super + {grave,Tab}
+super + {q,Tab}
     bspc {window,desktop} -f last
 
 super + apostrophe

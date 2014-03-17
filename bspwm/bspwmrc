@@ -16,8 +16,8 @@ bspc config focus_follows_pointer 		  true
 bspc config normal_border_color   		  '#222222'
 bspc config focused_border_color  		  '#444444' 
 bspc config presel_border_color   		  '#B7CE42'
-bspc config focused_locked_border_color   '#222222'
-bspc config normal_locked_border_color    '#222222'
+#bspc config focused_locked_border_color   '#222222'
+#bspc config normal_locked_border_color    '#222222'
 
 bspc config auto_cancel		 			  true
 bspc rule -a tilda floating=on focus=on locked=on

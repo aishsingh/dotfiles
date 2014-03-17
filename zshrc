@@ -9,6 +9,9 @@ plugins=(git)
 export EDITOR=vim
 export PATH="$PATH":~/.bin
 
+alias ls='ls --color=auto'
+alias winword='playonlinux --run "Microsoft Word 2010"'
+
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
