@@ -18,7 +18,7 @@ hi CursorLineNr 		 ctermfg=black ctermbg=grey
 hi Comment				 ctermfg=grey
 hi Statement			 ctermfg=darkgrey
 hi Visual				 ctermbg=darkgrey ctermfg=black
-hi SpecialKey			 ctermfg=grey cterm=NONE
+hi SpecialKey			 ctermfg=darkgrey cterm=NONE
 hi MatchParen			 ctermbg=darkgreen ctermfg=black cterm=BOLD
 hi Pmenu				 ctermbg=black ctermfg=grey 
 hi PmenuSel				 ctermbg=darkgreen 
@@ -113,7 +113,7 @@ set shiftwidth=4
 
 "Tab indentation symbols
 "set list
-"set list lcs=tab:\|\ 
+"set list lcs=tab:\¦\ 
 
 " Note, perl automatically sets foldmethod in the syntax file
 "autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
@@ -171,7 +171,6 @@ set clipboard=unnamed
 
 nmap <Leader>\ :TagbarToggle<CR>
 
-let g:notes_directories = ['~/.vim/notes']
 "let g:syntastic_cpp_compiler = '-std=c++11' 
 
 " solid underscore
@@ -231,39 +230,11 @@ hi EasyMotionShade  ctermbg=none ctermfg=darkgrey
 hi EasyMotionTarget2First ctermbg=none ctermfg=red
 hi EasyMotionTarget2Second ctermbg=none ctermfg=lightred
 
-" Insert a disposable marker after the cursor
-nmap <leader>ma :MultieditAddMark a<CR>
+" Default highlighting (see help :highlight and help :highlight-link)
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
 
-" Insert a disposable marker before the cursor
-nmap <leader>mi :MultieditAddMark i<CR>
-
-" Make a new line and insert a marker
-nmap <leader>mo o<Esc>:MultieditAddMark i<CR>
-nmap <leader>mO O<Esc>:MultieditAddMark i<CR>
-
-" Insert a marker at the end/start of a line
-nmap <leader>mA $:MultieditAddMark a<CR>
-nmap <leader>mI ^:MultieditAddMark i<CR>
-
-" Make the current selection/word an edit region
-vmap <leader>m :MultieditAddRegion<CR>  
-nmap <leader>mm viw:MultieditAddRegion<CR>
-
-" Restore the regions from a previous edit session
-nmap <leader>mu :MultieditRestore<CR>
-
-" Move cursor between regions n times
-map ]m :MultieditHop 1<CR>
-map [m :MultieditHop -1<CR>
-
-" Start editing!
-nmap <leader>M :Multiedit<CR>
-
-" Clear the word and start editing
-nmap <leader>C :Multiedit!<CR>
-
-" Unset the region under the cursor
-nmap <silent> <leader>md :MultieditClear<CR>
-
-" Unset all regions
-nmap <silent> <leader>mr :MultieditReset<CR>
+inoremap { {<CR>}<Esc>ko
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ( ()<Esc>ha

@@ -17,7 +17,7 @@ super + b
 super + {s,f}
     bspc window -t {floating,fullscreen}
 
-super + {q,Tab}
+super + {c,Tab}
     bspc {window,desktop} -f last
 
 super + apostrophe
@@ -37,7 +37,7 @@ super + m
 super + {_,shift + }{h,j,k,l}
     bspc window -{f,s} {left,down,up,right}
 
-super + {_,shift + }c
+super + {_,shift + }q
     bspc window -f {next,prev}
 
 super + {comma,period}
@@ -87,7 +87,7 @@ super + shift + Return
 super + ctrl + Return
     urxvt -e ranger /data
 super + p
-    dmenu_run -sb \#B7CE42 -sf \#000000 -nb \#222222 -h 19 -dim .6
+    dmenu_run -sb \#66aacc -sf \#000000 -nb \#222222 -h 19 -dim .6
 super + r
 	/home/aish/.config/dmenu/renamedesk
 super + backslash

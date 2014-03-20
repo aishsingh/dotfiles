@@ -1,4 +1,6 @@
+# Mounts
 devmon --exec-on-drive "twmnc -c 'Mounted %f on %d'" --exec-on-unmount "twmnc -c 'Unmounted %l'" --exec-on-remove "twmnc -c 'Device removed'" &
+CopyConsole -r=/mnt/sync/cloud -u="aishwarya_singh95@hotmail.com" —data=/home/aish/.copy -daemon
 
 # Fix up X server
 xrdb -merge ~/.Xresources &
@@ -21,7 +23,8 @@ mpd ~/.config/mpd/mpd.conf &
 
 # Set Wallpaper
 #hsetroot -solid \#444444
-hsetroot -center ~/downloads/wallpapers/the-alps-2-1920x1200.jpg
+#hsetroot -center ~/downloads/wallpapers/the-alps-2-1920x1200.jpg
+hsetroot -center ~/downloads/wallpapers/chain.jpg
 
 # Set Cursor
 xsetroot -cursor_name left_ptr

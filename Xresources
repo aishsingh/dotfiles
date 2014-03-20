@@ -1,7 +1,7 @@
 Xcursor.theme: DMZ-White
 
 URxvt.depth: 32
-URxvt.background: [95]#222222
+URxvt.background: [75]#222222
 URxvt.scrollBar: false
 
 URxvt*font:                 xft:Terminess Powerline:regular:size=10

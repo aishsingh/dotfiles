@@ -32,12 +32,17 @@ man() {
 NORMALMODE="%{$fg[green]%} -- [% NORMAL]%  -- %{$reset_color%}"
 INSERTMODE="%{$fg[white]%} -- [% INSERT]%  -- %{$reset_color%}"
 bindkey -v
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
+bindkey '^P'	 up-history
+bindkey '^[[5~'	 up-history
+bindkey '^N'	 down-history
+bindkey '^[[6~'	 down-history
+bindkey '^?'	 backward-delete-char
+bindkey '^[[3~'  delete-char
+bindkey '^h'	 backward-delete-char
+bindkey '^w'	 backward-kill-word
+bindkey '^r'	 history-incremental-search-backward
+bindkey '^[[1~'	 beginning-of-line
+bindkey '^[[4~'	 end-of-line
 RPS1="${${KEYMAP/vicmd/$NORMALMODE}/(main|viins)/$INSERTMODE}"
 RPS2=$RPS1
 function zle-line-init zle-keymap-select {
