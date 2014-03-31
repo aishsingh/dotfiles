@@ -1,6 +1,6 @@
 # Mounts
 devmon --exec-on-drive "twmnc -c 'Mounted %f on %d'" --exec-on-unmount "twmnc -c 'Unmounted %l'" --exec-on-remove "twmnc -c 'Device removed'" &
-CopyConsole -r=/mnt/sync/cloud -u="aishwarya_singh95@hotmail.com" —data=/home/aish/.copy -daemon
+#CopyConsole -r=/mnt/sync/cloud -u="aishwarya_singh95@hotmail.com" —data=/home/aish/.copy -daemon
 
 # Fix up X server
 xrdb -merge ~/.Xresources &
@@ -12,7 +12,7 @@ xset fp rehash
 
 # screen powersave after 2 min
 xset +dpms
-xset dpms 0 0 120
+xset dpms 0 0 500
 
 # Compositor
 compton --config ~/.config/compton.conf &
@@ -43,7 +43,7 @@ amixer set Master 95%
 amixer set Speaker 28%
 
 # Notification Daemon
-twmnd &
+#twmnd &
 
 # Start bspwm 
 sxhkd &

@@ -1,6 +1,8 @@
 execute pathogen#infect()
 syntax on
 
+set expandtab
+
 "tell vim we are in a 256 colour terminal to fix vim-css-color not working
 set t_Co=256
 
@@ -13,30 +15,33 @@ set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 
 "main vim colour
-hi LineNr				 ctermfg=darkgrey 
-hi CursorLineNr 		 ctermfg=black ctermbg=grey
-hi Comment				 ctermfg=grey
-hi Statement			 ctermfg=darkgrey
-hi Visual				 ctermbg=darkgrey ctermfg=black
-hi SpecialKey			 ctermfg=darkgrey cterm=NONE
-hi MatchParen			 ctermbg=darkgreen ctermfg=black cterm=BOLD
-hi Pmenu				 ctermbg=black ctermfg=grey 
-hi PmenuSel				 ctermbg=darkgreen 
-hi NonText				 ctermfg=darkgrey
-hi SignColumn			 ctermbg=black
-hi Folded				 ctermfg=black ctermbg=darkmagenta cterm=none
-hi FoldColumn			 ctermbg=black ctermfg=darkgrey
-hi VertSplit 			 ctermfg=black cterm=NONE
-hi Constant				 ctermfg=blue
-hi Character			 ctermfg=blue
-hi Number				 ctermfg=blue
-hi Boolean				 ctermfg=blue
-hi Float				 ctermfg=blue
-hi String				 ctermfg=darkred
-hi Directory			 ctermfg=blue
-hi SpellBad				 ctermfg=white ctermbg=red
-hi SpellCap				 ctermfg=black ctermbg=yellow
-hi Search				 ctermfg=black ctermbg=yellow cterm=none
+"hi LineNr				 ctermfg=darkgrey 
+"hi CursorLineNr 		 ctermfg=black ctermbg=grey
+"hi Comment				 ctermfg=darkgrey
+"hi Statement			 ctermfg=lightblue
+"hi Visual				 ctermbg=darkgrey ctermfg=black
+"hi SpecialKey			 ctermfg=darkgrey cterm=NONE
+"hi MatchParen			 ctermbg=darkgreen ctermfg=black cterm=BOLD
+"hi Pmenu				 ctermbg=black ctermfg=grey 
+"hi PmenuSel				 ctermbg=darkgreen 
+"hi NonText				 ctermfg=darkgrey
+"hi SignColumn			 ctermbg=black
+"hi Folded				 ctermfg=black ctermbg=darkmagenta cterm=none
+"hi FoldColumn			 ctermbg=black ctermfg=darkgrey
+"hi VertSplit 			 ctermfg=black cterm=NONE
+"hi Constant				 ctermfg=magenta
+"hi Character			 ctermfg=magenta
+"hi Number				 ctermfg=magenta
+"hi Boolean				 ctermfg=magenta
+"hi Float				 ctermfg=magenta
+"hi String				 ctermfg=grey
+"hi Directory			 ctermfg=blue
+"hi SpellBad				 ctermfg=white ctermbg=red
+"hi SpellCap				 ctermfg=black ctermbg=yellow
+"hi Search				 ctermfg=black ctermbg=yellow cterm=none
+"hi Conditional 			 ctermfg=red
+"hi Identifier 			 ctermfg=darkgreen
+"hi Type 			 	 ctermfg=lightblue
 
 set number
 set nocompatible
@@ -69,7 +74,7 @@ if &term =~ '^screen'
 endif
 
 "airline theme
-"let g:airline_theme = 'airlineish'
+"let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -122,7 +127,7 @@ set shiftwidth=4
 let g:CommandTMaxHeight = 25
 
 "MRU view recent files
-nmap <CR> :MRU<CR>
+nmap <leader>mru :MRU<CR>
 
 "change fold column size (leader = '\')
 nmap <leader>] :set foldcolumn+=1<CR>
@@ -155,11 +160,11 @@ hi StartifySlash		ctermfg=darkgrey
 hi StartifySpecial		ctermfg=darkgrey
 
 "Unbind the cursor keys in insert, normal and visual modes.
-for prefix in ['i', 'n', 'v']
-	for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-		exe prefix . "noremap " . key . " <Nop>"
-	endfor
-endfor
+"for prefix in ['i', 'n', 'v']
+	"for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+		"exe prefix . "noremap " . key . " <Nop>"
+	"endfor
+"endfor
 
 "When feeling hardcore
 "noremap h <NOP>
@@ -209,7 +214,7 @@ hi TagbarHighlight ctermfg=magenta ctermbg=black cterm=none
 hi TagbarKind	   ctermfg=blue
 hi TagbarHelp 	   ctermfg=darkgrey
 hi TagbarScope 	   ctermfg=grey
-autocmd FileType c,cpp nested :TagbarOpen
+autocmd FileType c,cpp,pascal nested :TagbarOpen
 let g:tagbar_width = 25
 let g:tagbar_autoshowtag = 1
 let g:tagbar_compact = 1
@@ -234,7 +239,42 @@ hi EasyMotionTarget2Second ctermbg=none ctermfg=lightred
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
 
-inoremap { {<CR>}<Esc>ko
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ( ()<Esc>ha
+"" Auto closing of brackets and quotes
+"autocmd FileType pascal,c,cpp,java inoremap { {<CR>}<Esc>ko
+"inoremap " ""<Esc>ha
+"inoremap ' ''<Esc>ha
+"inoremap ( ()<Esc>ha
+
+nmap ; :
+"nmap <CR> i<CR><Esc>
+"nmap <BS> <BS>x
+
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<Cr>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_start_key='<Cr>'
+
+"nmap <F11> :SCCompile<cr> 
+"nmap <F12> :SCCompileRun<cr> 
+
+nmap <F11> :!sudo /mnt/sync/cloud/COS10009/SwinGame/run.sh<cr> 
+nmap <F12> :!sudo /mnt/sync/cloud/COS10009/SwinGame/build.sh && /mnt/sync/cloud/COS10009/SwinGame/run.sh<cr> 
+
+function! Ranger()
+    " Get a temp file name without creating it
+    let tmpfile = substitute(system('mktemp -u'), '\n', '', '')
+    " Launch ranger, passing it the temp file name
+    silent exec '!RANGER_RETURN_FILE='.tmpfile.' ranger'
+    " If the temp file has been written by ranger
+    if filereadable(tmpfile)
+        " Get the selected file name from the temp file
+        let filetoedit = system('cat '.tmpfile)
+        exec 'edit '.filetoedit
+        call delete(tmpfile)
+    endif
+    redraw!
+endfunction
+
+nmap <leader>R :call Ranger()<cr>

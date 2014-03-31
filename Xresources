@@ -1,14 +1,14 @@
 Xcursor.theme: DMZ-White
 
 URxvt.depth: 32
-URxvt.background: [75]#222222
+URxvt.background: [90]#222222
 URxvt.scrollBar: false
 
-URxvt*font:                 xft:Terminess Powerline:regular:size=10
-URxvt*imFont:               xft:Terminess Powerline:regular:size=10
-URxvt*boldFont:             xft:Terminess Powerline:bold:size=10
-URxvt*italicFont:           xft:Terminess Powerline:italic:size=10
-URxvt*boldItalicFont:       xft:Terminess Powerline:bold:italic:size=10
+URxvt*font:                 xft:Source Code Pro for Powerline:size=10
+URxvt*imFont:               xft:Source Code Pro for Powerline:size=10
+URxvt*boldFont:             xft:Source Code Pro for Powerline:size=10
+URxvt*italicFont:           xft:Source Code Pro for Powerline:size=10
+URxvt*boldItalicFont:       xft:Source Code Pro for Powerline:italic:size=10
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  dwb
@@ -39,28 +39,28 @@ URxvt*keysym.End: \033[4~
 
 !black
 *color0: #282828
-*color8: #4d4d4d
+*color8: #5d5d5d
 !red
-*color1: #D81860
-*color9: #F00060
+*color1: #c75646
+*color9: #e09690
 !green
-*color2: #B7CE42
-*color10: #BDE077
+*color2: #8eb33b
+*color10: #cdee69
 !yellow
-*color3: #FEA63C
-*color11: #FFE863
+*color3: #d0b03c
+*color11: #ffe377
 !blue
-*color4: #18748B
-*color12: #66AABB
+*color4: #72b3cc
+*color12: #9cd9f0
 !magenta
-*color5: #75507B 
-*color13: #AD7FA8 
+*color5: #c8a0d1
+*color13: #fbb1f9 
 !cyan
-*color6: #5E7175
-*color14: #A3BABF
+*color6: #218693
+*color14: #77dfd8
 !white
-*color7: #D3D7CF
-*color15: #EEEEEC
+*color7: #b0b0b0
+*color15: #f7f7f7
 
 
 !For man pages and url colour

@@ -17,27 +17,27 @@ own_window_hints undecorated,sticky,below,skip_taskbar,skip_pager
 draw_shades no
 
 #position
-gap_x 605
-gap_y 2
-alignment top_middle
+gap_x 905
+gap_y 0
+alignment bottom_middle
 
 #behaviour
-update_interval 1
+update_interval 0.5
 
 #colour
 default_color 6c6c6c
 own_window_colour 222222
 #font
 use_xft yes
-xftfont Terminus:size=8
+xftfont Roboto:Medium:size=9
 
 # force utf8? note that utf8 support required xft
 override_utf8_locale yes
 
 #to prevent window from moving
 use_spacer none
-minimum_size 1310 0
-maximum_width 1310
+minimum_size 1010 0
+maximum_width 1010
 #mpd
 mpd_host localhost
 mpd_port 6600
