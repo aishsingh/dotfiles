@@ -259,8 +259,8 @@ let g:multi_cursor_start_key='<Cr>'
 "nmap <F11> :SCCompile<cr> 
 "nmap <F12> :SCCompileRun<cr> 
 
-nmap <F11> :!sudo /mnt/sync/cloud/COS10009/SwinGame/run.sh<cr> 
-nmap <F12> :!sudo /mnt/sync/cloud/COS10009/SwinGame/build.sh && /mnt/sync/cloud/COS10009/SwinGame/run.sh<cr> 
+nmap <F11> :!sudo /data/Swinburne/COS10009/SwinGame/run.sh<cr> 
+nmap <F12> :!sudo /data/Swinburne/COS10009/SwinGame/build.sh && /data/Swinburne/COS10009/SwinGame/run.sh<cr> 
 
 function! Ranger()
     " Get a temp file name without creating it

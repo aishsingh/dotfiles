@@ -8,11 +8,13 @@ plugins=(git)
 
 export EDITOR=vim
 export PATH="$PATH":~/.bin
+#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
 
 alias ls='ls --color=auto'
 alias winword='playonlinux --run "Microsoft Word 2010"'
 
 source $ZSH/oh-my-zsh.sh
+#source /home/aish/.zsh-autosuggestions/autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 

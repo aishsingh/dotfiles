@@ -6,7 +6,7 @@ super + alt + Escape
     pkill -x panel; pkill -x tilda; bspc quit
 
 super + a
-    bspc window -c && sleep .2 && bspc desktop -r || bspc desktop -r
+    bspc window -c || bspc desktop -r #&& sleep .2 && bspc desktop -r || bspc desktop -r
 
 super + t
     bspc desktop -l next
@@ -106,6 +106,8 @@ super + shift + bracket{left,right}
     bspc desktop -s {prev,next}
 ctrl + {percent,quotedbl}
 	bspc window -p {right,down} && urxvt
+Print
+    escrotum -s '/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png' && mplayer /data/scrot/scrotsound.mp3
 # MPD
 XF86AudioPlay
     ncmpcpp toggle
