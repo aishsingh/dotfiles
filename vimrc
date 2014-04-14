@@ -12,7 +12,8 @@ colorscheme deep
 
 "change bg colour of current line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+set cursorcolumn
+"hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 
 "main vim colour
 "hi LineNr				 ctermfg=darkgrey 
@@ -278,3 +279,15 @@ function! Ranger()
 endfunction
 
 nmap <leader>R :call Ranger()<cr>
+
+" View currnet highlighting type and name
+map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+let g:ctrlp_extensions = ['funky']
+
+nnoremap <c-o> :CtrlPFunky<Cr>

@@ -107,7 +107,7 @@ super + shift + bracket{left,right}
 ctrl + {percent,quotedbl}
 	bspc window -p {right,down} && urxvt
 Print
-    escrotum -s '/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png' && mplayer /data/scrot/scrotsound.mp3
+    escrotum -s '/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png' && twmnc 'Screenshot saved at' $(date +'/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png') && mplayer /data/scrot/scrotsound.mp3
 # MPD
 XF86AudioPlay
     ncmpcpp toggle

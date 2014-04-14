@@ -43,7 +43,7 @@ amixer set Master 95%
 amixer set Speaker 28%
 
 # Notification Daemon
-#twmnd &
+twmnd &
 
 # Start bspwm 
 sxhkd &

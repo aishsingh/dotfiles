@@ -14,8 +14,8 @@ bspc config borderless_monocle    		  true
 bspc config gapless_monocle       		  false
 bspc config focus_follows_pointer 		  true
 bspc config normal_border_color   		  '#444444'
-bspc config focused_border_color  		  '#81d3d3'
-bspc config presel_border_color   		  '#B7CE42'
+bspc config focused_border_color  		  '#C7B579'
+bspc config presel_border_color   		  '#81d3d3' #'#B7CE42'
 
 bspc config auto_cancel		 			  true
 bspc rule -a tilda floating=on focus=on locked=on
