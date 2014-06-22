@@ -14,11 +14,13 @@ mkfifo "$PANEL_FIFO"
 
 #bspc config top_padding $PANEL_HEIGHT
 
+/home/aish/downloads/dzen2_front.sh > "$PANEL_FIFO" &
+echo '  ' > "$PANEL_FIFO" &
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-#clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
 
-conky -c ~/.config/conky/conkyrc > "$PANEL_FIFO" &
+# conky -c ~/.config/conky/conkyrc > "$PANEL_FIFO" &
+/home/aish/downloads/dzen2.sh > "$PANEL_FIFO" &
 
 case "$flavor" in
     bar)

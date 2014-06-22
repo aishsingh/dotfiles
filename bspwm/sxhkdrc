@@ -11,6 +11,9 @@ super + a
 super + t
     bspc desktop -l next
 
+super + T
+    bspc config -d focused window_gap 0
+
 super + b
     bspc desktop -B
 
@@ -34,10 +37,10 @@ super + y
 super + m
     bspc window -s biggest
 
-super + {_,shift + }{h,j,k,l}
+super + {_,shift + }{j,k,l,semicolon}
     bspc window -{f,s} {left,down,up,right}
 
-super + {_,shift + }q
+super + {_,shift + }w
     bspc window -f {next,prev}
 
 super + {comma,period}
@@ -46,16 +49,16 @@ super + {comma,period}
 super + bracket{left,right}
     bspc desktop -f {prev,next}
 
-super + ctrl + {h,j,k,l}
+super + ctrl + {j,k,l,semicolon}
     bspc window -p {left,down,up,right}
 
-super + ctrl + {_,shift + }space
-    bspc {window -p cancel,desktop -c}
+# super + ctrl + {_,shift + }space
+#     bspc {window -p cancel,desktop -c}
 
-super + alt + {h,j,k,l}
+super + alt + {j,k,l,semicolon}
     bspc window -e {left -10,down +10,up -10,right +10}
 
-super + alt + shift + {h,j,k,l}
+super + alt + shift + {j,k,l,semicolon}
     bspc window -e {right -10,up +10,down -10,left +10}
 
 super + ctrl + {1-9}
@@ -87,13 +90,15 @@ super + shift + Return
 ctrl + backslash
     urxvt -e ranger /data/Swinburne/
 super + p
-    dmenu_run -sb \#66aacc -sf \#000000 -nb \#222222 -h 19 -dim .6
+    dmenu_run -sb \#ae81ff -sf \#000000 -nb \#222222 -h 19 -dim .6
+super + slash
+    /home/aish/.config/dmenu/search
 super + r
 	/home/aish/.config/dmenu/renamedesk
 super + backslash
 	/home/aish/.config/dmenu/adddesk
 super + shift + backslash
-	/home/aish/.config/dmenu/adddesk tmp
+	/home/aish/.config/dmenu/adddesk num
 super + ctrl + shift + l
 	bspc window -t locked
 super + ctrl + shift + s
@@ -108,6 +113,8 @@ ctrl + {percent,quotedbl}
 	bspc window -p {right,down} && urxvt
 Print
     escrotum -s '/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png' && twmnc 'Screenshot saved at' $(date +'/data/scrot/screenshot_%d_%m_%Y_%I_%M%p.png') && mplayer /data/scrot/scrotsound.mp3
+Pause
+    gromit-mpx -k Pause -a
 # MPD
 XF86AudioPlay
     ncmpcpp toggle
@@ -123,7 +130,11 @@ ctrl + Delete
     ncmpcpp prev
 ctrl + KP_Add
     ncmpcpp next
-
+super + space
+    wmctrl -a:ACTIVE -e 1,650,350,600,400
+# apps
+super + c
+    chromium &
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd && xrdb -merge ~/.Xresources
@@ -132,9 +143,9 @@ alt + minus
 alt + equal
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 4 ))
 # Move floating windows (requires baskerville's xdo)
-alt + {h,l,k,j}
+alt + {j,semicolon,l,k}
 	xdo move {-x -20,-x +20,-y -20,-y +20}
 
 # Resize floating windows
-alt + shift + {h,l,k,j}
+alt + shift + {j,semicolon,l,k}
 	xdo resize {-w -20,-w +20,-h -20,-h +20} && bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}

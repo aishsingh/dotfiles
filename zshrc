@@ -8,10 +8,11 @@ plugins=(git)
 
 export EDITOR=vim
 export PATH="$PATH":~/.bin
-#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+export JAVA_HOME=/opt/java7
+_JAVA_AWT_WM_NONREPARENTING=1; export _JAVA_AWT_WM_NONREPARENTING
 
 alias ls='ls --color=auto'
-alias winword='playonlinux --run "Microsoft Word 2010"'
+# alias winword='playonlinux --run "Microsoft Word 2010"'
 
 source $ZSH/oh-my-zsh.sh
 #source /home/aish/.zsh-autosuggestions/autosuggestions.zsh
@@ -31,8 +32,8 @@ man() {
 }
 
 # VIM mode
-NORMALMODE="%{$fg[green]%} -- [% NORMAL]%  -- %{$reset_color%}"
-INSERTMODE="%{$fg[white]%} -- [% INSERT]%  -- %{$reset_color%}"
+NORMALMODE="%{$fg[magenta]%} -- [% NORMAL]%  -- %{$reset_color%}"
+INSERTMODE="%{$fg[black]%} -- [% INSERT]%  -- %{$reset_color%}"
 bindkey -v
 bindkey '^P'	 up-history
 bindkey '^[[5~'	 up-history

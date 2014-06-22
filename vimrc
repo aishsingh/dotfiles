@@ -2,6 +2,8 @@ execute pathogen#infect()
 syntax on
 
 set expandtab
+set relativenumber
+set nocompatible
 
 "tell vim we are in a 256 colour terminal to fix vim-css-color not working
 set t_Co=256
@@ -13,42 +15,13 @@ colorscheme deep
 "change bg colour of current line
 set cursorline
 set cursorcolumn
-"hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
-
-"main vim colour
-"hi LineNr				 ctermfg=darkgrey 
-"hi CursorLineNr 		 ctermfg=black ctermbg=grey
-"hi Comment				 ctermfg=darkgrey
-"hi Statement			 ctermfg=lightblue
-"hi Visual				 ctermbg=darkgrey ctermfg=black
-"hi SpecialKey			 ctermfg=darkgrey cterm=NONE
-"hi MatchParen			 ctermbg=darkgreen ctermfg=black cterm=BOLD
-"hi Pmenu				 ctermbg=black ctermfg=grey 
-"hi PmenuSel				 ctermbg=darkgreen 
-"hi NonText				 ctermfg=darkgrey
-"hi SignColumn			 ctermbg=black
-"hi Folded				 ctermfg=black ctermbg=darkmagenta cterm=none
-"hi FoldColumn			 ctermbg=black ctermfg=darkgrey
-"hi VertSplit 			 ctermfg=black cterm=NONE
-"hi Constant				 ctermfg=magenta
-"hi Character			 ctermfg=magenta
-"hi Number				 ctermfg=magenta
-"hi Boolean				 ctermfg=magenta
-"hi Float				 ctermfg=magenta
-"hi String				 ctermfg=grey
-"hi Directory			 ctermfg=blue
-"hi SpellBad				 ctermfg=white ctermbg=red
-"hi SpellCap				 ctermfg=black ctermbg=yellow
-"hi Search				 ctermfg=black ctermbg=yellow cterm=none
-"hi Conditional 			 ctermfg=red
-"hi Identifier 			 ctermfg=darkgreen
-"hi Type 			 	 ctermfg=lightblue
-
 set number
 set nocompatible
 set laststatus=2
 set noshowmode
 set nobackup
+set modeline
+set autochdir
 
 let NERDTreeMinimalUI = 1
 let NERDTreeWinSize = 25
@@ -84,21 +57,25 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 "syntastic for syntax checking
+" let g:syntastic_enable_c_checker = 1
+" let g:syntastic_enable_cpp_checker = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1    " Put errors on left side
 "let g:syntastic_quiet_warnings = 1  " Only errors, not warnings please
 "let g:syntastic_auto_loc_list = 2   " Only show errors when I ask
-"let g:syntastic_disabled_filetypes = ['html', 'js']
+let g:syntastic_disabled_filetypes = ['html', 'js']
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
-let g:syntastic_cpp_compiler = 'gcc'
+let g:syntastic_cpp_compiler = 'g++'
+" let g:syntastic_c_check_header = 0
+" let g:syntastic_c_no_include_search = 1
+" let g:syntastic_c_compiler = 'gcc'
 if has('unix')
 	let g:syntastic_error_symbol = '✕'
 	let g:syntastic_style_error_symbol = '>'
 	let g:syntastic_warning_symbol = '⚠'
 	let g:syntastic_style_warning_symbol = '>'
 else
-
 	let g:syntastic_error_symbol = '!'
 	let g:syntastic_style_error_symbol = '>'
 	let g:syntastic_warning_symbol = '.'
@@ -106,8 +83,8 @@ else
 endif
 
 "fix for accidental Shift key
-cmap W w
-cmap Q q
+" cmap W w
+" cmap Q q
 
 "clear searchs by typing :C
 command C let @/=""
@@ -135,8 +112,17 @@ nmap <leader>] :set foldcolumn+=1<CR>
 nmap <leader>[ :set foldcolumn-=1<CR>
 
 "Startify splash screen
-let g:startify_custom_header =
-      \ map(split(system('fortune | cowsay -f stegosaurus'), '\n'), '"   ". v:val') + ['','']
+let g:startify_custom_header = [
+\ '  __     ___             _____ _   _ ',
+\ '  \ \   / (_)_ __ ___   |___  | | | |   '  ,
+\ '   \ \ / /| | ''_ ` _ \     / /| |_| |',
+\ '    \ V / | | | | | | |   / / |___  |',
+\ '     \_/  |_|_| |_| |_|  /_/(_)   |_|',
+\ '',
+\ '',
+\ ]
+      " \ map(split(system('fortune'), '\n'), '"   ". v:val') + ['','']
+      " \ map(split(system('fortune | cowsay -f stegosaurus'), '\n'), '"   ". v:val') + ['','']
 let g:startify_bookmarks = [ '~/.vimrc', 
 							\'~/.Xresources', 
 							\'~/.config/bspwm/bspwmrc', 
@@ -151,12 +137,12 @@ let g:startify_list_order =  [['   Recently modified'],
             			    \ ['   Bookmarks:'],
             				\ 'bookmarks' ] 
 
-hi StartifyHeader		ctermfg=darkgreen
-hi StartifyBracket		ctermfg=darkgrey
-hi StartifyNumber		ctermfg=darkred
-hi StartifySection		ctermfg=darkgreen
-hi StartifyPath			ctermfg=darkgrey
-hi StartifyFile			ctermfg=grey
+hi StartifyHeader		guifg=darkgreen ctermfg=magenta
+hi StartifyBracket		guifg=darkgrey ctermfg=darkgrey
+hi StartifyNumber		guifg=magenta ctermfg=magenta
+hi StartifySection		guifg=darkgreen ctermfg=darkgreen
+hi StartifyPath			guifg=darkgrey ctermfg=darkgrey
+hi StartifyFile			guifg=darkgrey ctermfg=grey
 hi StartifySlash		ctermfg=darkgrey
 hi StartifySpecial		ctermfg=darkgrey
 
@@ -211,10 +197,6 @@ function! MyFoldText()
 endfunction
 																																		
 " TagBar
-hi TagbarHighlight ctermfg=magenta ctermbg=black cterm=none
-hi TagbarKind	   ctermfg=blue
-hi TagbarHelp 	   ctermfg=darkgrey
-hi TagbarScope 	   ctermfg=grey
 autocmd FileType c,cpp,pascal nested :TagbarOpen
 let g:tagbar_width = 25
 let g:tagbar_autoshowtag = 1
@@ -231,22 +213,9 @@ map  N <Plug>(easymotion-prev)
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
-hi EasyMotionTarget ctermbg=none ctermfg=blue
-hi EasyMotionShade  ctermbg=none ctermfg=darkgrey
-hi EasyMotionTarget2First ctermbg=none ctermfg=red
-hi EasyMotionTarget2Second ctermbg=none ctermfg=lightred
-
-" Default highlighting (see help :highlight and help :highlight-link)
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-
-"" Auto closing of brackets and quotes
-"autocmd FileType pascal,c,cpp,java inoremap { {<CR>}<Esc>ko
-"inoremap " ""<Esc>ha
-"inoremap ' ''<Esc>ha
-"inoremap ( ()<Esc>ha
 
 nmap ; :
+" Func as insert mode in normal mode
 "nmap <CR> i<CR><Esc>
 "nmap <BS> <BS>x
 
@@ -291,3 +260,64 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 let g:ctrlp_extensions = ['funky']
 
 nnoremap <c-o> :CtrlPFunky<Cr>
+
+noremap <leader><Cr> :!clear && make debug<cr>
+
+" T-Comment
+map <leader>cc <c-_><c-_>
+map <leader>ca <c-_>a /* */<CR>
+call tcomment#DefineType('c', '// %s')
+call tcomment#DefineType('cpp', '// %s')
+
+" Switch between buffers without saving
+set hidden
+
+" Abreviations
+iab teh the
+iab Teh The
+
+" vim : menu
+set wildmenu
+
+" Bubble single lines
+nmap <PageUp> [e
+nmap <PageDown> ]e
+" Bubble multiple lines
+vmap <PageUp> [e
+vmap <PageDown> ]e
+
+" Select all in indent level
+function! SelectIndent ()
+  let temp_var=indent(line("."))
+  while indent(line(".")-1) >= temp_var
+    exe "normal k"
+  endwhile
+  exe "normal V"
+  while indent(line(".")+1) >= temp_var
+    exe "normal j"
+  endwhile
+endfun
+nmap <Space> :call SelectIndent()<CR>
+
+" Strip the newline from the end of a string
+function! Chomp(str)
+  return substitute(a:str, '\n$', '', '')
+endfunction
+
+" Find a file and pass it to cmd
+function! DmenuOpen(cmd)
+  let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:cmd))
+  if empty(fname)
+    return
+  endif
+  execute a:cmd . " " . fname
+endfunction
+
+" map <c-t> :call DmenuOpen("tabe")<cr>
+" map <c-f> :call DmenuOpen("e")<cr>
+
+" jkl; movement
+noremap ; l
+noremap j h
+noremap k j
+noremap l k
