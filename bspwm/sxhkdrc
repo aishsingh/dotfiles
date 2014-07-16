@@ -37,7 +37,7 @@ super + y
 super + m
     bspc window -s biggest
 
-super + {_,shift + }{j,k,l,semicolon}
+super + {_,shift + }{h,j,k,l}
     bspc window -{f,s} {left,down,up,right}
 
 super + {_,shift + }w
@@ -49,16 +49,16 @@ super + {comma,period}
 super + bracket{left,right}
     bspc desktop -f {prev,next}
 
-super + ctrl + {j,k,l,semicolon}
+super + ctrl + {h,j,k,l}
     bspc window -p {left,down,up,right}
 
 # super + ctrl + {_,shift + }space
 #     bspc {window -p cancel,desktop -c}
 
-super + alt + {j,k,l,semicolon}
+super + alt + {h,j,k,l}
     bspc window -e {left -10,down +10,up -10,right +10}
 
-super + alt + shift + {j,k,l,semicolon}
+super + alt + shift + {h,j,k,l}
     bspc window -e {right -10,up +10,down -10,left +10}
 
 super + ctrl + {1-9}
@@ -90,7 +90,7 @@ super + shift + Return
 ctrl + backslash
     urxvt -e ranger /data/Swinburne/
 super + p
-    dmenu_run -sb \#ae81ff -sf \#000000 -nb \#222222 -h 19 -dim .6
+    dmenu_run -sb \#111111 -sf \#ae81ff -nb \#111111 -h 16 -dim .5
 super + slash
     /home/aish/.config/dmenu/search
 super + r

@@ -48,7 +48,7 @@ if &term =~ '^screen'
 endif
 
 "airline theme
-"let g:airline_theme = 'wombat'
+let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -67,9 +67,10 @@ let g:syntastic_disabled_filetypes = ['html', 'js']
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_compiler = 'g++'
-" let g:syntastic_c_check_header = 0
-" let g:syntastic_c_no_include_search = 1
-" let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_check_header = 0
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_c_compiler = 'gcc'
+" let g:syntastic_c_compiler = 'gcc -std=c99 -lSDL2 -lSDL2_gfx -lSDL2_ttf'
 if has('unix')
 	let g:syntastic_error_symbol = '✕'
 	let g:syntastic_style_error_symbol = '>'
@@ -176,25 +177,34 @@ let &t_EI .= "\<Esc>[1 q"
 " 6 -> solid vertical bar
 
 " Code folding
-"autocmd BufWinLeave * if expand("%") != "" | mkview | endif
-"autocmd BufWinEnter * if expand("%") != "" | loadview | endif
-set foldmethod=marker
-set foldtext=MyFoldText()
-function! MyFoldText()
-	let lines = 1 + v:foldend - v:foldstart
-	let spaces = repeat(' ', indent(v:foldstart) -1)
-
-	let linestxt = 'lines'
-	if lines == 1
-		linestxt = 'line'
-	endif
-
-	let firstline = getline(v:foldstart)
-	let line = firstline
-
-	"return spaces . '+' . v:folddashes . ' ' . lines . ' ' . linestxt . ': ' . line . ' '
-	return spaces . line . ' +' . v:folddashes . ' ' . lines . ' ' . linestxt . ' '
+function! NeatFoldText()
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
+
+set foldmethod=syntax
+set foldtext=NeatFoldText()
+
+set foldlevel=0
+set foldnestmax=1 "only fold top level
+
+let c_no_comment_fold = 1
+
+" Unfold all automatically on c headers
+autocmd BufWinEnter *.h set foldlevel=10
+
+" save/load view automatically
+" autocmd BufWinLeave *.* mkview!
+" autocmd BufWinEnter *.* silent loadview
+
+
+
 																																		
 " TagBar
 autocmd FileType c,cpp,pascal nested :TagbarOpen
@@ -317,7 +327,29 @@ endfunction
 " map <c-f> :call DmenuOpen("e")<cr>
 
 " jkl; movement
-noremap ; l
-noremap j h
-noremap k j
-noremap l k
+" noremap ; l
+" noremap j h
+" noremap k j
+" noremap l k
+
+" Markdown is recognised when *.md
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Preview markdown with the help of `instant_markdown` plugin using dwb
+let g:instant_markdown_autostart = 1
+command MDPreview execute "!dwb 'localhost:8090' >& /dev/null &"
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '/home/aish/dotfiles/vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit="vertical"

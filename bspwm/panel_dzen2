@@ -5,10 +5,10 @@
 font_family='sans-serif'
 font_size=11
 
-. panel_colors
+. /home/aish/.config/bspwm/panel_colors
 
 adaptive_centering=0
-screen_width=$(sres -W)
+screen_width=910
 NORMIFS=$IFS
 FIELDIFS=':'
 PADDING='  '
@@ -86,8 +86,8 @@ while read -r line ; do
                         ;;
                     L*)
                         # layout
-                        layout=$(printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/')
-                        wm_infos="${wm_infos}^fg()^bg()${PADDING}${PADDING}^fg($COLOR_LAYOUT_FG)^bg($COLOR_LAYOUT_BG)^ca(1, bspc desktop -l next)${PADDING}$layout${PADDING}^ca()"
+                        # layout=$(printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/')
+                        # wm_infos="${wm_infos}^fg()^bg()${PADDING}${PADDING}^fg($COLOR_LAYOUT_FG)^bg($COLOR_LAYOUT_BG)^ca(1, bspc desktop -l next)${PADDING}$layout${PADDING}^ca()"
                         ;;
                 esac
                 shift
