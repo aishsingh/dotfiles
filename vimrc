@@ -22,13 +22,14 @@ set noshowmode
 set nobackup
 set modeline
 set autochdir
+set nowrap
 
 let NERDTreeMinimalUI = 1
 let NERDTreeWinSize = 25
 let NERDTreeShowBookmarks = 1
 "NERDTree for exploring project files
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 "open NERDTree automatically when a file is not specified
 
 if ! has('gui_running')
@@ -101,7 +102,7 @@ set shiftwidth=4
 
 " Note, perl automatically sets foldmethod in the syntax file
 "autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-"autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 let g:CommandTMaxHeight = 25
 
@@ -138,9 +139,9 @@ let g:startify_list_order =  [['   Recently modified'],
             			    \ ['   Bookmarks:'],
             				\ 'bookmarks' ] 
 
-hi StartifyHeader		guifg=darkgreen ctermfg=magenta
+hi StartifyHeader		guifg=darkgreen ctermfg=red
 hi StartifyBracket		guifg=darkgrey ctermfg=darkgrey
-hi StartifyNumber		guifg=magenta ctermfg=magenta
+hi StartifyNumber		guifg=red ctermfg=red
 hi StartifySection		guifg=darkgreen ctermfg=darkgreen
 hi StartifyPath			guifg=darkgrey ctermfg=darkgrey
 hi StartifyFile			guifg=darkgrey ctermfg=grey
@@ -207,7 +208,7 @@ autocmd BufWinEnter *.h set foldlevel=10
 
 																																		
 " TagBar
-autocmd FileType c,cpp,pascal nested :TagbarOpen
+" autocmd FileType c,cpp,pascal nested :TagbarOpen
 let g:tagbar_width = 25
 let g:tagbar_autoshowtag = 1
 let g:tagbar_compact = 1
@@ -272,6 +273,7 @@ let g:ctrlp_extensions = ['funky']
 nnoremap <c-o> :CtrlPFunky<Cr>
 
 noremap <leader><Cr> :!clear && make debug<cr>
+noremap <leader>T :!clear && make test<cr>
 
 " T-Comment
 map <leader>cc <c-_><c-_>
@@ -340,6 +342,8 @@ command MDPreview execute "!dwb 'localhost:8090' >& /dev/null &"
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '/home/aish/dotfiles/vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['/data/Android/*', '/data/Swinburne/COS20007/*']
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
@@ -353,3 +357,113 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+" Yankring
+let g:yankring_replace_n_nkey = ',n'
+let g:yankring_replace_n_pkey = ',p'
+
+nmap ,y :YRShow<CR>
+
+" Goyo (Zenmode)
+nmap ,z :Goyo<CR>
+
+function! GoyoBefore()
+  set nocursorcolumn
+  set nocursorline
+  set foldlevel=1
+  Limelight
+endfunction
+function! GoyoAfter()
+  set cursorcolumn
+  set cursorline
+  Limelight!
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+let g:goyo_width = 100
+
+"Completion
+set pumheight=30             " so the complete menu doesn't get too big
+
+
+" Gundo (Undo manager)
+let g:gundo_close_on_revert = 0
+let g:gundo_preview_bottom = 1
+let g:gundo_preview_height = 18
+let g:gundo_width = 32
+let g:gundo_help = 0
+nmap ,g :TagbarToggle<CR>:GundoToggle<CR>
+
+" LaTeX (rubber) macro for compiling
+nnoremap ,c :w<CR>:!rubber --pdf --warn all %<CR>
+
+" View PDF macro; '%:r' is current file's root (base) name.
+nnoremap ,v :!zathura %:r.pdf &<CR><CR>
+
+" Skeletons.vim (skeletop templates)
+let g:skeletons_dir = '~/.vim/skeletons/'
+let g:tex_flavor = "tex"
+
+" Limelight (Status Line)
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'readonly': 'MyReadonly',
+      \   'modified': 'MyModified',
+      \   'filename': 'MyFilename'
+      \ },
+      \ }
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\ue0a0 "._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "\ue0a2"
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction

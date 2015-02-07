@@ -3,7 +3,6 @@
 "
 " Maintainer:	Aishwarya Singh (aishwarya_singh95@hotmail.com)
 " Version:      1.0
-" Last Change:  17 - Apr - 2014
 
 hi clear
 
@@ -16,19 +15,19 @@ let colors_name = "deep"
 " Main
 hi CursorLine cterm=NONE ctermbg=234 ctermfg=NONE
 hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE
-hi LineNr				 ctermfg=241 ctermbg=237
-hi CursorLineNr 		 ctermfg=234 ctermbg=37
+hi LineNr				 ctermfg=8 ctermbg=234
+hi CursorLineNr 		 ctermfg=141 ctermbg=16 cterm=BOLD
 hi Comment				 ctermfg=darkgrey
 hi Statement			 ctermfg=grey
-hi Visual				 ctermfg=black ctermbg=37 cterm=none
+hi Visual				 ctermfg=16 ctermbg=141 cterm=NONE
 hi SpecialKey			 ctermfg=grey cterm=NONE
 hi MatchParen			 ctermbg=magenta ctermfg=black cterm=BOLD
 hi Pmenu				 ctermbg=237 ctermfg=grey 
 hi PmenuSel				 ctermbg=magenta 
 hi NonText				 ctermfg=darkgrey
 hi SignColumn			 ctermbg=237
-hi Folded				 ctermfg=245 ctermbg=237 cterm=none
-hi FoldColumn			 ctermfg=251 ctermbg=237
+hi Folded				 ctermfg=232 ctermbg=237 cterm=none
+hi FoldColumn			 ctermfg=238 ctermbg=234
 hi VertSplit 			 ctermfg=black cterm=NONE
 hi Constant				 ctermfg=9
 hi Special				 ctermfg=8
@@ -42,7 +41,7 @@ hi SpellBad				 ctermfg=white ctermbg=red
 hi SpellCap				 ctermfg=black ctermbg=yellow
 hi Search				 ctermfg=black ctermbg=yellow cterm=none
 hi Identifier			 ctermfg=grey
-hi PreProc               ctermfg=37 cterm=bold
+hi PreProc               ctermfg=250 cterm=bold
 
 " Startify
 hi StartifyHeader		ctermfg=magenta

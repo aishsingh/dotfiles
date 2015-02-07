@@ -90,7 +90,7 @@ super + shift + Return
 ctrl + backslash
     urxvt -e ranger /data/Swinburne/
 super + p
-    dmenu_run -sb \#111111 -sf \#ae81ff -nb \#111111 -h 16 -dim .5
+    dmenu_run -sb \#111111 -sf \#d81860 -nb \#111111 -h 16 -dim .5
 super + slash
     /home/aish/.config/dmenu/search
 super + r
@@ -117,24 +117,31 @@ Pause
     gromit-mpx -k Pause -a
 # MPD
 XF86AudioPlay
-    ncmpcpp toggle
+    mpc toggle
 ctrl + XF86AudioPlay
-    ncmpcpp stop
+    mpc stop
 XF86AudioLowerVolume
-    ncmpcpp volume -2
+    amixer set PCM 2%-
 XF86AudioRaiseVolume
-    ncmpcpp volume +2
+    amixer set PCM 2%+
 XF86AudioMute
     amixer set Master toggle
 ctrl + Delete
-    ncmpcpp prev
+    mpc prev
 ctrl + KP_Add
-    ncmpcpp next
+    mpc next
 super + space
     wmctrl -a:ACTIVE -e 1,650,350,600,400
+# screen brightness
+XF86MonBrightnessUp
+    xbacklight +10
+XF86MonBrightnessDown
+    xbacklight -10
 # apps
 super + c
     chromium &
+super + n
+    xpad -n
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd && xrdb -merge ~/.Xresources
@@ -143,9 +150,9 @@ alt + minus
 alt + equal
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 4 ))
 # Move floating windows (requires baskerville's xdo)
-alt + {j,semicolon,l,k}
+alt + {h,l,k,j}
 	xdo move {-x -20,-x +20,-y -20,-y +20}
 
 # Resize floating windows
-alt + shift + {j,semicolon,l,k}
+alt + shift + {h,l,k,j}
 	xdo resize {-w -20,-w +20,-h -20,-h +20} && bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}

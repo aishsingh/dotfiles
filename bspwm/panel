@@ -20,7 +20,7 @@ $BSPC > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
 # conky -c ~/.config/conky/conkyrc > "$PANEL_FIFO" &
-/home/aish/downloads/dzen2.sh > "$PANEL_FIFO" &
+/home/aish/dotfiles/dzen2.sh > "$PANEL_FIFO" &
 
 case "$flavor" in
     bar)

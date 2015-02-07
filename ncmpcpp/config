@@ -20,7 +20,7 @@ header_visibility = "no"
 statusbar_visibility = "yes"
 titles_visibility = "yes"
 mouse_support = "no"
-fancy_scrolling = "yes"
+/* fancy_scrolling = "yes" */
 cyclic_scrolling = "yes"
 autocenter_mode = "yes"
 centered_cursor = "yes"
@@ -34,7 +34,7 @@ clock_display_seconds = "no"
 
 /* colors */
 colors_enabled = "yes"
-statusbar_color = "white"
+/* statusbar_color = "white" */
 empty_tag_color = "yellow"
 main_window_color = "white" 
 main_window_highlight_color = "white"

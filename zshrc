@@ -80,3 +80,8 @@ insert-last-command-output() {
 	LBUFFER+="$(eval $history[$((HISTCMD-1))])"
 }
 zle -N insert-last-command-output
+eval "$(dircolors ~/.dirname)";
+
+# fix grep warning
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS
