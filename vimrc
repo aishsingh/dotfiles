@@ -271,6 +271,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 let g:ctrlp_extensions = ['funky']
 
 nnoremap <c-o> :CtrlPFunky<Cr>
+nnoremap <c-i> :CtrlPBuffer<Cr>
 
 noremap <leader><Cr> :!clear && make debug<cr>
 noremap <leader>T :!clear && make test<cr>
@@ -351,6 +352,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" YCM rust support
+let g:ycm_rust_src_path = '/usr/src/rust/src'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -467,3 +471,6 @@ function! MyFilename()
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
+
+" html has a shorter tab
+autocmd Syntax xml,html,xhtml set shiftwidth=2

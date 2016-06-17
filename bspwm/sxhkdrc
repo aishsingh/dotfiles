@@ -88,7 +88,7 @@ super + Return
 super + shift + Return
 	urxvt -e zsh -c 'bspc window -t floating && zsh' #&& xdo move -x 600 -y 400
 ctrl + backslash
-    urxvt -e ranger /data/Swinburne/
+    urxvt -e ranger /data/swinburne/
 super + p
     dmenu_run -sb \#111111 -sf \#d81860 -nb \#111111 -h 16 -dim .5
 super + slash

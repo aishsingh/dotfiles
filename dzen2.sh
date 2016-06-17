@@ -182,5 +182,5 @@ while :; do
 	echo -n "$(volume)$SEP"
 	echo -n "$(battery)$SEP"
 	echo "$(clock)"
-	sleep 10
+	sleep 3
 done | dzen2 -fg $FG_COLOR -bg $BG_COLOR -dock -ta $TEXT_ALIGNMENT -w $WIDTH -h $HEIGHT -x $X -y $Y -fn $FONT
